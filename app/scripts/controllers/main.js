@@ -6,15 +6,15 @@ app.factory('Items', function($firebase) {
 
 	itemsService.getAll = function() {
      return $firebase(REF)
-  }
+  };
 
   return itemsService;
 });
 
 app.controller('MainCtrl', function ($scope, Items) {
-    $scope.item = {}
+    $scope.item = {};
 
-    $scope.items = Items.getAll()
+    $scope.items = Items.getAll();
 
     $scope.addItem = function(e) {
       if (e.keyCode != 13) return;
