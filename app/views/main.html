@@ -7,6 +7,13 @@
   <h3 class="text-muted">Portfolio</h3>
 </div>
 
-<p ng-repeat="item in awesomeThings">
-  {{item}}
-</p>
+<h2> Portfolio </h2>
+
+<div id="itemsDiv">
+  <div ng-repeat="item in items">
+  	<em>{{item.title}}</em>: {{item.desc}}
+  </div>
+</div>
+
+<input type="text" ng-model="title" placeholder="Title">
+<input type="text" ng-model="desc" ng-keydown="addItem($event)" placeholder="Description...">
