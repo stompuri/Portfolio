@@ -1,5 +1,7 @@
 <h2> Portfolio </h2>
 
+<stFlash message='flash' type='success'></stFlash>
+
 <a ng-click="inputFormVisible = !inputFormVisible" ng-hide="inputFormVisible" class="btn btn-primary btn-lg btn-block">Create a new entry</a>
 
 <form ng-submit="addItem()" ng-show="inputFormVisible" role="form">
@@ -26,5 +28,7 @@
 <div id="itemsDiv">
   <div ng-repeat="item in items | orderByPriority | filter:searchText">
   	<em>{{item.title}}</em>: {{item.desc}}
+  	<span style="float:right" ng-click="deleteItem(item.$id)" class="glyphicon glyphicon-trash">
+  	</span>
   </div>
 </div>
