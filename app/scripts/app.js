@@ -1,19 +1,30 @@
 'use strict';
 
-angular
-  .module('portfolioApp', [
+var portfolioApp = angular.module('portfolioApp', [
+  'ngRoute',
+  'portfolioControllers'
+]);
+/*
     'ngCookies',
     'ngResource',
     'ngSanitize',
     'ngRoute'
   ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
-  });
+*/
+
+portfolioApp.config(['$routeProvider',
+  function($routeProvider) {
+  $routeProvider
+    .when('/views/:1', {
+      templateUrl: 'views/main.html',
+      controller: 'MainCtrl'
+    })
+    .when('/views/:3', {
+      templateUrl: 'views/portfolio.html',
+      controller: 'MainCtrl'
+    })
+    .otherwise({
+      redirectTo: '/views/:1'
+    });
+  }
+]);

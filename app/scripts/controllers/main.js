@@ -1,4 +1,4 @@
-var app = angular.module('portfolioApp', ["firebase"]);
+var app = angular.module('portfolioControllers', ["firebase"]);
 
 app.factory('Items', function($firebase) {
 	var itemsService = {};
@@ -8,18 +8,32 @@ app.factory('Items', function($firebase) {
      return $firebase(REF)
   };
 
+  itemsService.add = function($title, $desc) {
+    REF.push({title: $title, desc: $desc});
+  }
+
   return itemsService;
 });
 
 app.controller('MainCtrl', function ($scope, Items) {
+    // Initialize item object
     $scope.item = {};
+    //$scope.ng-model = 1;
+
+    // hide the input form by default
+    $scope.inputFormVisible = false;
 
     $scope.items = Items.getAll();
 
-    $scope.addItem = function(e) {
-      if (e.keyCode != 13) return;
-      $scope.items.$add({title: $scope.title, desc: $scope.desc});
-      $scope.desc = "";
+    $scope.createItem = function() {
+      Items.add($scope.item.title, $scope.item.desc)
+      $scope.inputFormVisible = false;
+      $scope.item = {};
     };
+});
 
-  });
+app.controller('PortfolioCtrl', ['$scope', '$routeParams',
+  function($scope, $routeParams) {
+    //$scope.ng-model = 2;
+    //$scope.portfolio = $routeParams.portfolio;
+  }])
