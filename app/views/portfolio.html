@@ -1,34 +1,38 @@
-<h2> Portfolio </h2>
+<h2> My SW develoment portfolio </h2>
 
 <stFlash message='flash' type='success'></stFlash>
 
-<a ng-click="inputFormVisible = !inputFormVisible" ng-hide="inputFormVisible" class="btn btn-primary btn-lg btn-block">Create a new entry</a>
+<a ng-click="inputFormVisible = !inputFormVisible" ng-show="loginObj.user && !inputFormVisible" class="btn btn-primary btn-lg btn-block" style="max-width: 250px;">Create a new entry</a>
 
 <form ng-submit="addItem()" ng-show="inputFormVisible" role="form">
 	<div class="form-group">
-	<input type="text" ng-model="item.title" placeholder="Title" class="form-control"></input>
+	<input type="text" ng-model="item.title" placeholder="Title" class="form-control view-item"></input>
 	</div>
 	<div class="form-group">
-	<input type="text" ng-model="item.desc" placeholder="Description..." class="form-control"></input>
+	<input type="text" ng-model="item.desc" placeholder="Description..." class="form-control view-item"></input>
 	</div>
 	<div class="form-group">
-	<input type="text" ng-model="item.link" class="form-control"></input>
+	<input type="text" ng-model="item.link" class="form-control view-item"></input>
 	</div>
 	<div class="form-group">
-	<input type="text" ng-model="item.imgUrl" class="form-control"></input>
+	<input type="text" ng-model="item.imgUrl" class="form-control view-item"></input>
 	</div>
 	<button class="btn btn-primary">create</button>
 	<button class="btn btn-default" ng-click="inputFormVisible = !inputFormVisible">hide</button>
 </form>
 
 <br/>
-<input placeholder="Filter..." class="form-control" data-ng-model="searchText" />
+<input placeholder="Filter..." class="form-control view-item" data-ng-model="searchText" />
 <br/>
 
 <div id="itemsDiv">
   <div ng-repeat="item in items | orderByPriority | filter:searchText">
   	<em>{{item.title}}</em>: {{item.desc}}
-  	<span style="float:right" ng-click="deleteItem(item.$id)" class="glyphicon glyphicon-trash">
+  	<span
+  	  style="float:right"
+  	  ng-click="deleteItem(item.$id)"
+  	  ng-show="loginObj.user"
+  	  class="glyphicon glyphicon-trash">
   	</span>
   </div>
 </div>

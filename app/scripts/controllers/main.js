@@ -1,5 +1,10 @@
 var app = angular.module('portfolioControllers', ["firebase"]);
 
+app.factory('LoginService', function ($firebaseSimpleLogin) {
+  var REF = new Firebase("https://burning-fire-6770.firebaseio.com/");
+  return $firebaseSimpleLogin(REF);
+});
+
 app.factory('ItemService', function($firebase) {
   var REF = new Firebase("https://burning-fire-6770.firebaseio.com/");
   return $firebase(REF);
@@ -41,16 +46,23 @@ app.controller('ContactCtrl', ['$scope', '$routeParams',
   }
 ]);
 
-app.controller('PortfolioCtrl', ['$scope', '$routeParams', 'ItemService',
-  function($scope, $routeParams, itemService) {
+app.controller('PortfolioCtrl',
+  ['$scope', '$routeParams', 'ItemService', 'LoginService',
+  function($scope, $routeParams, itemService, loginService) {
     // Initialize item object
     $scope.item = {};
+
+    // Get login object
+    $scope.loginObj = loginService;
 
     // hide the input form by default
     $scope.inputFormVisible = false;
 
-    // Define the portfolio items
+    // Define the portfolio items:
+    // Get all items
     $scope.items = itemService;
+
+    // Add new item
     $scope.addItem = function() {
       // Create & add the item defined by the input form
       $scope.items.$add({title: $scope.item.title, desc: $scope.item.desc});
@@ -67,10 +79,12 @@ app.controller('PortfolioCtrl', ['$scope', '$routeParams', 'ItemService',
   }
 ]);
 
-app.controller('AuthCtrl', ['$scope', '$firebaseSimpleLogin',
-  function($scope, $firebaseSimpleLogin) {
-    var REF = new Firebase("https://burning-fire-6770.firebaseio.com/");
-    $scope.loginObj = $firebaseSimpleLogin(REF);
+app.controller('AuthCtrl', ['$scope', 'LoginService',
+  function($scope, loginService) {
+    // Get login object
+    $scope.loginObj = loginService;
+
+    // Initialize empty user object
     $scope.user = {};
 
     $scope.loginUser = function() {
