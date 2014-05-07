@@ -30,7 +30,12 @@ app.directive('stFlash', function() {
 
 app.controller('MainCtrl', ['$scope',
   function ($scope) {
+    $scope.items = ['about', 'contact', 'portfolio'];
+    $scope.selected = $scope.items[0];
 
+    $scope.select = function(item) {
+      $scope.selected = item;
+    }
   }
 ]);
 
@@ -93,6 +98,10 @@ app.controller('AuthCtrl', ['$scope', 'LoginService',
         password: $scope.user.password
       }).then(function(user) {
         console.log('Logged in as: ', user.uid);
+        // Empty fields
+        $scope.user = {};
+        // Define the flash pop-up
+        $scope.flash = "Logged in as '" + user.uid + "!";
       }, function(error) {
         console.error('Login failed: ', error);
       });

@@ -73,9 +73,16 @@ body {
   margin: 30px 0;
 }
 .view-container {
-  max-width: 800px;
+  max-width: 780px;
   margin-left: auto;
   margin-right: auto;
+}
+.view-form {
+  padding:5px;
+  border-style:dotted;
+  border-width:1px;
+  min-width: 300px;
+  display: table-cell;
 }
 .view-item {
   max-width:250px;
