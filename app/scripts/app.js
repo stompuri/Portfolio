@@ -14,17 +14,22 @@ var portfolioApp = angular.module('portfolioApp', [
 
 portfolioApp.config(['$routeProvider',
   function($routeProvider) {
-  $routeProvider
-    .when('/views/:1', {
-      templateUrl: 'views/main.html',
-      controller: 'MainCtrl'
-    })
-    .when('/views/:3', {
-      templateUrl: 'views/portfolio.html',
-      controller: 'MainCtrl'
-    })
-    .otherwise({
-      redirectTo: '/views/:1'
-    });
+    $routeProvider
+      .when('/', {
+        templateUrl: 'views/about.html',
+        controller: 'AboutCtrl'
+      })
+      .when('/2', {
+        templateUrl: 'views/contact.html',
+        controller: 'ContactCtrl'
+      })
+      .when('/3', {
+        templateUrl: 'views/portfolio.html',
+        controller: 'PortfolioCtrl'
+      })
+      .otherwise({
+        redirectTo: '/'
+      }
+    );
   }
 ]);

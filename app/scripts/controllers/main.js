@@ -1,39 +1,49 @@
 var app = angular.module('portfolioControllers', ["firebase"]);
 
-app.factory('Items', function($firebase) {
-	var itemsService = {};
+app.factory('ItemService', function($firebase) {
   var REF = new Firebase("https://burning-fire-6770.firebaseio.com/");
-
-	itemsService.getAll = function() {
-     return $firebase(REF)
-  };
-
-  itemsService.add = function($title, $desc) {
-    REF.push({title: $title, desc: $desc});
-  }
-
-  return itemsService;
+  return $firebase(REF);
 });
 
-app.controller('MainCtrl', function ($scope, Items) {
+app.controller('MainCtrl', ['$scope',
+  function ($scope) {
+
+  }
+]);
+
+app.controller('AboutCtrl', ['$scope', '$routeParams',
+  function($scope, $routeParams) {
+
+  }
+]);
+
+app.controller('ContactCtrl', ['$scope', '$routeParams',
+  function($scope, $routeParams) {
+
+  }
+]);
+
+app.controller('PortfolioCtrl', ['$scope', '$routeParams', 'ItemService',
+  function($scope, $routeParams, itemService) {
     // Initialize item object
     $scope.item = {};
-    //$scope.ng-model = 1;
 
     // hide the input form by default
     $scope.inputFormVisible = false;
 
-    $scope.items = Items.getAll();
-
-    $scope.createItem = function() {
-      Items.add($scope.item.title, $scope.item.desc)
+    // Define portfolio items
+    $scope.items = itemService;
+    $scope.addItem = function() {
+      $scope.items.$add({title: $scope.item.title, desc: $scope.item.desc});
       $scope.inputFormVisible = false;
       $scope.item = {};
     };
+  }
+]);
+/*
+app.filter('inArray', function() {
+  return function inArray( haystack, needle) {
+    var result = []
+  }
 });
-
-app.controller('PortfolioCtrl', ['$scope', '$routeParams',
-  function($scope, $routeParams) {
-    //$scope.ng-model = 2;
-    //$scope.portfolio = $routeParams.portfolio;
-  }])
+*/

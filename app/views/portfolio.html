@@ -1,16 +1,8 @@
 <h2> Portfolio </h2>
 
-<input placeholder="write somthing to filter entries" class="form-control" ng-model="criteria"></input>
-
-<div id="itemsDiv">
-  <div ng-repeat="entry in items | filter:criteria | orderBy:'id':true">
-  	<em>{{entry.title}}</em>: {{entry.desc}}
-  </div>
-</div>
-<br/>
 <a ng-click="inputFormVisible = !inputFormVisible" ng-hide="inputFormVisible" class="btn btn-primary btn-lg btn-block">Create a new entry</a>
 
-<form ng-submit="createItem()" ng-show="inputFormVisible" role="form">
+<form ng-submit="addItem()" ng-show="inputFormVisible" role="form">
 	<div class="form-group">
 	<input type="text" ng-model="item.title" placeholder="Title" class="form-control"></input>
 	</div>
@@ -27,4 +19,12 @@
 	<button class="btn btn-default" ng-click="inputFormVisible = !inputFormVisible">hide</button>
 </form>
 
-{{item}}
+<br/>
+<input placeholder="Filter..." class="form-control" data-ng-model="searchText" />
+<br/>
+
+<div id="itemsDiv">
+  <div ng-repeat="item in items | orderByPriority | filter:searchText">
+  	<em>{{item.title}}</em>: {{item.desc}}
+  </div>
+</div>
