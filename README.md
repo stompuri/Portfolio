@@ -1,20 +1,33 @@
-Portfolio
-=========
+Generic Portfolio single page app
+=================================
+----- By Seppo Tompuri 2014 -----
+
+https://github.com/stompuri/Portfolio
 
 Project repository for AngularJS-ohjelmointiprojekti-k2014
 
 The repository contains files for my (Seppo Tompuri) portfolio page.
-Used technologies: HTML, (Angular)JS and FireBase
+Used technologies: HTML, JS+AngularJS and FireBase
 
-The portfolio pages lists the SW projects I have been included (most are solo projects thou).
+User authentication:
+1) public usage contains viewing information and porftfolio items
+2) loggin in allows editing stuff and adding portfolio items
+
+General description:
+The general idea is to allow dynamic controlling of SW development portfolio. Each portfolio item contains some generic information, a photo and a link.
+The portfolio pages lists the SW projects I have been included (most are solo projects).
+
 Tier 1 (must)
-- The page allows adding portfolio items.
-- The added items are shown instantly on the page.
+- The page allows adding portfolio items. - DONE
+- The added items are shown instantly on the page. - DONE
 
 Tier 2 (should)
-- The page includes user authentication for adding items.
-- About data & CV & other marketing material about me
+- The page includes user authentication for adding items. - DONE
+- Without authentication the stuff can be only viewed. - DONE
+- With authentication stuff can be edited - DONE
+- File upload function for pushing new photos to server - DONE
 
 Tier 3 (added as many as possible - the agile way)
-- UI polishing
-- ...to be listed
+- UI polishing - never ends
+- About data & CV & other marketing material about me - To be done
+- Email send form for getting mails from possible employer - To be done
