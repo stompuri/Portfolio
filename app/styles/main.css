@@ -4,9 +4,47 @@ body {
   padding-bottom: 20px;
 }
 
+.flash {
+  margin: auto;
+  position: absolute;
+  top: 122px;
+  min-width:300px;
+  height:50px;
+  margin-left: auto;
+  margin-right: auto;
+  z-index:1000;
+  border: 1px solid #000000;
+  text-align: center;
+  font-weight: bold;
+}
+
+.border {
+  border: 1px solid #a0a0a0;
+}
+
 .textbox {  
   width:98%;
   padding:5px;
+}
+
+.helper {
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+
+.closebtn {
+  position:relative;
+  float: right;
+}
+
+.viewbox {
+  margin:10px;
+  padding:5px;
+  box-shadow:
+    5px 8px 8px rgba(0,0,0,0.75),
+    inset 5px 8px 8px rgba(255,255,255,0.4);
+  background:#ccc;
 }
 
 .box {
@@ -57,16 +95,16 @@ body {
   border-top: 1px solid #e5e5e5;
 }
 
+.topright {
+  position: absolute;
+  right:0px;
+  top:0px;
+}
+
 /* Customize container */
 @media (min-width: 768px) {
   .container {
     max-width: 730px;
-  }
-
-  .topright {
-    position: absolute;
-    right:0px;
-    top:0px;
   }
 }
 .container-narrow > hr {
@@ -81,11 +119,11 @@ body {
   padding:5px;
   border-style:dotted;
   border-width:1px;
-  min-width: 300px;
+  min-width: 400px;
   display: table-cell;
 }
 .view-item {
-  max-width:250px;
+  max-width:300px;
 }
 
 /* Main marketing message and sign up button */
@@ -123,4 +161,8 @@ body {
   .jumbotron {
     border-bottom: 0;
   }
+}
+
+#spin {
+  height: 60px;
 }

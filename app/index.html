@@ -35,15 +35,13 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <!-- Menu bar -->
-    <div class="container menu" ng-include="'views/main.html'" ng-controller="MainCtrl"></div>
     <!-- Login bar -->
     <div class="box topright" ng-include="'views/login.html'" ng-controller="AuthCtrl"></div>
+    <!-- Menu bar -->
+    <div class="container menu" ng-include="'views/main.html'" ng-controller="MainCtrl"></div>
 
     <!-- content -->
-    <!--div class="view-container"-->
-      <div ng-view class="view-container"></div>
-    <!--/div-->
+    <div ng-view class="view-container"></div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
@@ -75,6 +73,7 @@
     
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="scripts/app.js"></script>
+    <script src="scripts/sha256.js"></script>
     <script src="scripts/controllers/main.js"></script>
     <!-- endbuild -->
 </body>

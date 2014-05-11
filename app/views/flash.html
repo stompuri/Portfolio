@@ -1,4 +1,3 @@
-<div ng-show="message" class="alert" style="max-width: 500px;">
+<div ng-show="message" ng-click="message=null" class="alert flash">
 	{{message}}
-	<span style="float:right" ng-click="flash=null" class="glyphicon glyphicon-remove-sign"></span>
 </div>

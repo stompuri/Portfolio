@@ -1,13 +1,12 @@
 <div class="header">
-  <h3><small>SW Developer</small> Seppo Tompuri</h3>
-  <ul class="nav nav-pills pull-left">
+  <h3><small>{{about.prefix}}</small> {{about.name}}</h3>
+  <ul class="nav nav-pills">
     <li ng-class="{active: selected == 'about'}">
-    	<a ng-href="#/" ng-click="select('about')">About</a></li>
+    	<a ng-href="#/about" ng-click="select('about')">About</a></li>
     <li ng-class="{active: selected == 'contact'}">
-    	<a ng-href="#/2" ng-click="select('contact')">Contact</a></li>
+    	<a ng-href="#/contact" ng-click="select('contact')">Contact</a></li>
     <li ng-class="{active: selected == 'portfolio'}">
-    	<a ng-href="#/3" ng-click="select('portfolio')">Portfolio</a></li>
+    	<a ng-href="#/portfolio" ng-click="select('portfolio')">Portfolio</a></li>
   </ul>
 </div>
-
-<stFlash message='flash' type='success'></stFlash>
+<stflash message=flash.message type='success'></stflash>
