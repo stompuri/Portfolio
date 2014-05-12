@@ -1,9 +1,8 @@
 AngulraJS ohjelmointiprojekti 5-12.5. (1-3op)
 =============================================
-
 https://github.com/tuhoojabotti/AngularJS-ohjelmointiprojekti-k2014
 
-TUNTIKIRJANPITO
+TUNTIKIRJANPITO (Seppo Tompuri)
 
 | Selite     | 5.5 | 6.5 | 7.5 | 8.5 | 9.5 | 10.5 | 11.5 | 12.5 |     |
 | ---------- | --- | --- | --- | --- | --- | ---- | ---- | ---- | --- |
