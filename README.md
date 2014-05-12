@@ -27,7 +27,7 @@ Tier 2 (should)
 - With authentication stuff can be edited - DONE
 - File upload function for pushing new photos to server - DONE
 
-Tier 3 (added as many as possible - the agile way)
+Tier 3 (as an extra)
 - UI polishing - never ends
-- About data & CV & other marketing material about me - To be done
+- Add about data & CV & other marketing material about me - Partially done (CV part missing)
 - Email send form for getting mails from possible employer - To be done
