@@ -4,6 +4,8 @@ Generic Portfolio single page app
 
 https://github.com/stompuri/Portfolio
 
+Seppo Tompuri's portfolio: http://stompuri.github.com
+
 Project repository for AngularJS-ohjelmointiprojekti-k2014
 
 The repository contains files for my (Seppo Tompuri) portfolio page.
