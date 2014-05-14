@@ -118,7 +118,7 @@ app.directive('stfileinput', ['FIREBASE', 'UploadService',
                   document.getElementById("pano-" + attrs['target']).src = e.target.result;
                 }
                 $scope.upload.url = e.target.result;
-                $scope.upload.hash = hash;
+                $scope.upload.hash = hash + '/filePayload';
               });
             };
           })(f, $scope);
@@ -161,13 +161,20 @@ app.controller('AboutCtrl',
     $scope.upload = uploadService; // Get ref to file upload service
 
     $scope.save = function () {
-      // Delete old image if such exists
-      $scope.photos = photoService;
-      $scope.photos.$remove($scope.about.hash + '/filePayload');
 
-      // Create & add the item defined by the input form
-      $scope.about.imgUrl = $scope.upload.url;
-      $scope.about.hash = $scope.upload.hash;
+      // Delete old image if such exists and we are pushing a new one
+      if(item.hash && $scope.upload.hash) {
+        $scope.photos = photoService;
+        $scope.photos.$remove(about.hash);
+      }
+
+      // Set about to point to the new photo
+      if($scope.upload.hash) {
+        about.imgUrl = $scope.upload.url;
+        about.hash = $scope.upload.hash;
+      }
+
+      // Save the changes
       $scope.about.$save();
 
       // Define the flash pop-up
@@ -228,6 +235,7 @@ app.controller('PortfolioCtrl',
         imgUrl: $scope.upload.url,
         hash: $scope.upload.hash});
 
+      alert($scope.upload.hash);
       // Define the flash pop-up
       $scope.flash.message = "A new portfolio item '" + $scope.item.title + "' added!";
       // Clear & hide the input form
@@ -240,18 +248,23 @@ app.controller('PortfolioCtrl',
       $scope.upload = uploadService;
       $scope.flash = flashService;
 
-      // Delete old image if such exists
-      $scope.photos = photoService;
-      $scope.photos.$remove($scope.about.hash + '/filePayload');
+      // Delete old image if such exists and we are pushing a new one
+      if(item.hash && $scope.upload.hash) {
+        $scope.photos = photoService;
+        $scope.photos.$remove(item.hash);
+      }
+
+      // Set item to point to the new photo
+      if($scope.upload.hash) {
+        item.imgUrl = $scope.upload.url;
+        item.hash = $scope.upload.hash;
+      }
 
       // Push changes to Firebase
-      item.imgUrl = $scope.upload.url;
-      item.hash = $scope.upload.hash;
       $scope.items.$save(item.$id);
 
       // Define the flash pop-up
-      $scope.flash.message = "Portfolio item '" + item.title + "' edited!";
-      alert($scope.flash.message);
+      $scope.flash.message = "Changes to portfolio item '" + item.title + "' saved!";
     };
 
     $scope.deleteItem = function(key) {
