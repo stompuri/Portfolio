@@ -4,6 +4,10 @@ body {
   padding-bottom: 20px;
 }
 
+.top {
+  vertical-align:text-top;
+}
+
 .leftcell {
   position:absolute;
   left:0;
@@ -29,7 +33,7 @@ body {
 .flash {
   position: fixed;
   left: 50%;
-  top: 50%;
+  top: 15%;
   min-width:340px;
   height:60px;
   margin-left: -170px;
