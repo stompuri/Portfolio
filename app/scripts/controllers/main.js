@@ -1,8 +1,30 @@
 var app = angular.module('portfolioControllers', ["firebase"]);
+/* FILTERS */
+// Filter portfolio items by text
+app.filter('listToArray', function() {
+  return function(items, searchText) {
+    var filtered = [];
+    angular.forEach(items, function(item) {
+      if(typeof(item) != "function" && item != "items") {
+        if(searchText) {
+          if(item.title.toLowerCase().indexOf(searchText.toLowerCase()) > -1) {
+            filtered.push(item);
+          }
+        } else {
+          filtered.push(item);
+        }
+        
+      }
+    });
+
+    return filtered;
+  };
+});
+
 /* CONSTANTS: */
 app.constant('FIREBASE', {
   url: "https://burning-fire-6770.firebaseio.com/"
-})
+});
 
 /* SERVICES: */
 app.factory('LoginService',
@@ -82,7 +104,9 @@ app.directive('stflash', function() {
 app.directive('stitem', ['ItemsService',
   function(firebaseRef) {
     return {
-      restrict: 'E',
+      restrict: 'E',/*
+      transclude: true,
+      replace: true,*/
       templateUrl: 'views/item.html'
     };
   }
@@ -163,15 +187,15 @@ app.controller('AboutCtrl',
     $scope.save = function () {
 
       // Delete old image if such exists and we are pushing a new one
-      if(item.hash && $scope.upload.hash) {
+      if($scope.about.hash && $scope.upload.hash) {
         $scope.photos = photoService;
         $scope.photos.$remove(about.hash);
       }
 
       // Set about to point to the new photo
       if($scope.upload.hash) {
-        about.imgUrl = $scope.upload.url;
-        about.hash = $scope.upload.hash;
+        $scope.about.imgUrl = $scope.upload.url;
+        $scope.about.hash = $scope.upload.hash;
       }
 
       // Save the changes
@@ -201,6 +225,13 @@ app.controller('ContactCtrl', ['LoginService', '$scope', '$routeParams', 'AboutS
       // Define the flash pop-up
       $scope.flash.message = "Contact info edited!";
     };
+  }
+]);
+
+app.controller('DebugCtrl',
+  ['$scope', '$routeParams', 'FlashService',
+  function($scope, $routeParams, flashService) {
+    alert(1);
   }
 ]);
 
